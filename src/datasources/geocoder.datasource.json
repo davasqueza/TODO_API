@@ -1,0 +1,26 @@
+{
+  "connector": "rest",
+  "options": {
+    "headers": {
+      "accept": "application/json",
+      "content-type": "application/json"
+    }
+  },
+  "operations": [
+    {
+      "template": {
+        "method": "GET",
+        "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress",
+        "query": {
+          "format": "json",
+          "benchmark": "9",
+          "address": "{address}"
+        },
+        "responsePath": "$.result.addressMatches[*].coordinates"
+      },
+      "functions": {
+        "geocode": ["address"]
+      }
+    }
+  ]
+}
